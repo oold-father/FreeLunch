@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import random
 
 app = Flask(__name__)
@@ -17,7 +17,7 @@ def roll():
 
     index = random.randint(0, max - 1)
 
-    return assassination_list[index]
+    return render_template('roll.html', name=assassination_list[index])
 
 
 if __name__ == '__main__':
