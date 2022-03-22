@@ -1,0 +1,7 @@
+test/
+data/
+.idea/
+node_modules/
+__pycache__/
+__vscode__/
+var/
