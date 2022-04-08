@@ -1,23 +1,16 @@
-from flask import Flask, render_template
-import random
+from flask import Flask, jsonify
+
+from service.roll import roll_menu
 
 app = Flask(__name__)
 
-f = open("static/AssassinationList.txt", "r", encoding="utf8")
+app.config['JSON_AS_ASCII'] = False
 
-s = f.read()
-assassination_list = s.split("\n")
-
-f.close()
 
 @app.route("/")
 def roll():
-
-    max = len(assassination_list)
-
-    index = random.randint(0, max - 1)
-
-    return render_template('roll.html', name=assassination_list[index])
+    result = roll_menu()
+    return jsonify(result)
 
 
 if __name__ == '__main__':
